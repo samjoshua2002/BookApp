@@ -10,7 +10,6 @@ import com.example.book.Repository.BookRepository;
 import com.example.book.entity.BookEntity;
 
 @RestController
-
 @CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
     @Autowired

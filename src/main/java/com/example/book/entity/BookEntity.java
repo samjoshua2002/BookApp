@@ -2,9 +2,6 @@ package com.example.book.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
-
-
-
 enum BookFormat {
     HARDCOVER,
     PAPERBACK,
