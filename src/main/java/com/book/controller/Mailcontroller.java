@@ -1,7 +1,6 @@
 package com.book.controller;
 
-import com.book.EmailSender;
-
+import com.book.Service.EmailSender;
 import com.book.entity.Mailentity;
 
 import org.springframework.beans.factory.annotation.Autowired;
