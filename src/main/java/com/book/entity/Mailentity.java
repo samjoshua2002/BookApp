@@ -18,6 +18,13 @@ public class Mailentity {
     private String subject;   
     private String body;     
     
+    public Mailentity(Long id, String recipient, String subject, String body) {
+        this.id = id;
+        this.recipient = recipient;
+        this.subject = subject;
+        this.body = body;
+    }
+
     public Long getId() {
         return id;
     }
