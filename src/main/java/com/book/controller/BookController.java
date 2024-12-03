@@ -1,4 +1,4 @@
-package com.example.book.controller;
+package com.book.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.book.Repository.BookRepository;
-import com.example.book.entity.BookEntity;
+import com.book.Repository.BookRepository;
+import com.book.entity.BookEntity;
 
 
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000/")
 public class BookController {
     @Autowired
     public BookRepository bookRepository;
