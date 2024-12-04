@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.book.Repository.Mrepository;
-import com.book.Service.Emailservice;
-import com.book.entity.Mentity;
+import com.book.entity.*;
+import com.book.Repository.*;
+import com.book.Service.*;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,12 +29,18 @@ public class Mcontroller {
 	@PostMapping("/register")
 	public String register(@RequestBody Mentity user) {
 		try {
+			 String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
 			Optional<Mentity> existinguser=mrepo.findByUseremailOrUsernumber(user.getUseremail(), user.getUsernumber());
 			if(existinguser.isPresent()) {
 				return "account already exists";
+			}else if(user.getUseremail().matches(emailRegex)) {
+				mrepo.save(user);
+				return "registered successfuly";
 			}
-			 mrepo.save(user);
-			return "registered successfuly";
+			else {
+				return "Invalid email...";
+			}
+			 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
