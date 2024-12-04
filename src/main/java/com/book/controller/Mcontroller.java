@@ -30,15 +30,16 @@ public class Mcontroller {
 	public String register(@RequestBody Mentity user) {
 		try {
 			 String emailRegex = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$";
+			 String passwordRegex = "^(?=.[A-Za-z])(?=.\\d)(?=.*[#@])[A-Za-z\\d#@]{8,}$";
 			Optional<Mentity> existinguser=mrepo.findByUseremailOrUsernumber(user.getUseremail(), user.getUsernumber());
 			if(existinguser.isPresent()) {
 				return "account already exists";
-			}else if(user.getUseremail().matches(emailRegex)) {
+			}else if(user.getUseremail().matches(emailRegex) && user.getUserpassword().matches(passwordRegex)) {
 				mrepo.save(user);
 				return "registered successfuly";
 			}
 			else {
-				return "Invalid email...";
+				return "Invalid email and password...";
 			}
 			 
 		} catch (Exception e) {
